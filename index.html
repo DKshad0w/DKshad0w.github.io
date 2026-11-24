@@ -3,40 +3,180 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>DKshad0w</title>
+  <meta name="description" content="Personal site of DKshad0w — code, tools, and experiments.">
+  <title>DKshad0w — personal site</title>
   <style>
-    :root { color-scheme: dark; }
+    :root {
+      color-scheme: dark;
+      --bg: #0b0e14;
+      --ink: #e6edf3;
+      --muted: #9da7b3;
+      --faint: #8b949e;
+      --line: #262c36;
+      --accent: #e3b341;
+      --mono: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+      --sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
     * { box-sizing: border-box; }
+    html { -webkit-text-size-adjust: 100%; }
     body {
       margin: 0;
       min-height: 100vh;
+      background: var(--bg);
+      color: var(--ink);
+      font-family: var(--sans);
+      font-size: 16px;
+      line-height: 1.65;
+    }
+    ::selection { background: var(--accent); color: var(--bg); }
+
+    .wrap {
+      max-width: 1040px;
+      margin: 0 auto;
+      padding: clamp(2.5rem, 7vw, 6.5rem) 1.5rem 0;
       display: grid;
-      place-items: center;
-      background: #0d1117;
-      color: #e6edf3;
-      font: 16px/1.6 system-ui, -apple-system, "Segoe UI", sans-serif;
-      text-align: center;
-      padding: 2rem;
+      grid-template-columns: minmax(0, 16rem) minmax(0, 1fr);
+      gap: clamp(2.5rem, 7vw, 6rem);
+      align-items: start;
     }
-    main { max-width: 40rem; }
-    h1 { font-size: clamp(2rem, 8vw, 3.5rem); margin: 0 0 .5rem; letter-spacing: -.03em; }
-    p { color: #9198a1; margin: 0 0 2rem; }
+
+    .kicker, .meta, .links a, h1, h2, h3, footer, .tag {
+      font-family: var(--mono);
+    }
+    .kicker {
+      margin: 0 0 1.25rem;
+      font-size: .75rem;
+      letter-spacing: .14em;
+      color: var(--faint);
+    }
+    h1 {
+      margin: 0;
+      font-size: clamp(2.1rem, 6vw, 3.25rem);
+      font-weight: 600;
+      letter-spacing: -.045em;
+      line-height: 1.05;
+    }
+    .dot { color: var(--accent); }
+    .intro {
+      margin: 1.25rem 0 2.5rem;
+      max-width: 30ch;
+      color: var(--muted);
+    }
+    .links { display: grid; gap: .25rem; }
+    .links a { display: inline-block; padding: .7rem 0; font-size: .8125rem; }
+    .links a span { color: var(--faint); }
+
     a {
-      color: #e6edf3; text-decoration: none;
-      border: 1px solid #30363d; border-radius: 8px;
-      padding: .7rem 1.2rem; display: inline-block;
-      transition: border-color .15s, background .15s;
+      color: var(--ink);
+      text-decoration: none;
+      text-underline-offset: .2em;
     }
-    a:hover { border-color: #58a6ff; background: #161b22; }
-    footer { margin-top: 3rem; color: #6e7681; font-size: .85rem; }
+    a:hover { color: var(--accent); }
+    a:hover span { color: var(--accent); }
+    a:focus-visible {
+      outline: 2px solid var(--accent);
+      outline-offset: 4px;
+      border-radius: 2px;
+    }
+
+    section + section { margin-top: 4rem; }
+    h2 {
+      margin: 0 0 .5rem;
+      padding-bottom: .75rem;
+      border-bottom: 1px solid var(--line);
+      font-size: .75rem;
+      font-weight: 500;
+      letter-spacing: .16em;
+      text-transform: uppercase;
+      color: var(--faint);
+    }
+    .repo { padding: 1.75rem 0; border-bottom: 1px solid var(--line); }
+    .repo-head { display: flex; align-items: center; gap: .75rem; flex-wrap: wrap; }
+    h3 { margin: 0; font-size: 1.0625rem; font-weight: 500; letter-spacing: -.01em; }
+    h3 a { display: inline-block; padding: .55rem 0; }
+    .tag {
+      font-size: .6875rem;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      color: var(--faint);
+      border: 1px solid var(--line);
+      border-radius: 3px;
+      padding: .1rem .4rem;
+    }
+    .repo p {
+      margin: .875rem 0 0;
+      max-width: 62ch;
+      color: var(--muted);
+      text-wrap: pretty;
+    }
+    .meta { display: block; margin-top: 1rem; font-size: .75rem; color: var(--faint); }
+
+    .plain { list-style: none; margin: 1rem 0 0; padding: 0; }
+    .plain li { border-bottom: 1px solid var(--line); }
+    .plain a {
+      display: block;
+      padding: .9rem 0;
+      font-family: var(--mono);
+      font-size: .875rem;
+      word-break: break-word;
+    }
+
+    footer {
+      max-width: 1040px;
+      margin: clamp(4rem, 9vw, 7rem) auto 0;
+      padding: 1.5rem 1.5rem 2.5rem;
+      border-top: 1px solid var(--line);
+      font-size: .75rem;
+      color: var(--faint);
+    }
+    footer code { font-family: var(--mono); }
+
+    @media (max-width: 760px) {
+      .wrap { grid-template-columns: minmax(0, 1fr); }
+      .intro { margin-bottom: 2rem; }
+      section + section { margin-top: 3rem; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      * { transition-duration: .01ms !important; animation-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body>
-  <main>
-    <h1>DKshad0w</h1>
-    <p>Personal site &mdash; coming soon.</p>
-    <a href="https://github.com/DKshad0w">View my GitHub profile &rarr;</a>
-    <footer>Starter page &mdash; edit <code>index.html</code> to make it yours.</footer>
-  </main>
+  <div class="wrap">
+    <header>
+      <p class="kicker">~/home</p>
+      <h1>DKshad0w<span class="dot">.</span></h1>
+      <p class="intro">Code, tools, and experiments.</p>
+      <nav class="links" aria-label="Elsewhere">
+        <a href="https://github.com/DKshad0w">GitHub profile <span aria-hidden="true">&#8599;</span></a>
+        <a href="https://github.com/DKshad0w?tab=repositories">Repositories <span aria-hidden="true">&#8599;</span></a>
+      </nav>
+    </header>
+
+    <main>
+      <section aria-labelledby="selected">
+        <h2 id="selected">Selected work</h2>
+        <article class="repo">
+          <div class="repo-head">
+            <h3><a href="https://github.com/DKshad0w/hermes-SkillOpt">hermes-SkillOpt</a></h3>
+            <span class="tag">fork</span>
+          </div>
+          <p>Controlled skill optimization for Hermes Agent &mdash; derives from Microsoft Research's SkillOpt: 52/52 settings improved through text-space optimization with validation gates.</p>
+          <span class="meta">Updated Nov 2026</span>
+        </article>
+      </section>
+
+      <section aria-labelledby="elsewhere">
+        <h2 id="elsewhere">Elsewhere</h2>
+        <ul class="plain">
+          <li><a href="https://github.com/DKshad0w">github.com/DKshad0w</a></li>
+          <li><a href="https://github.com/DKshad0w?tab=repositories">All repositories</a></li>
+          <li><a href="https://github.com/DKshad0w/DKshad0w.github.io">Source of this site</a></li>
+        </ul>
+      </section>
+    </main>
+  </div>
+
+  <footer>Edit <code>index.html</code> in this repository to change this page.</footer>
 </body>
 </html>
