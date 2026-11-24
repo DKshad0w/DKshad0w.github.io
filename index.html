@@ -110,6 +110,25 @@
       text-wrap: pretty;
     }
     .meta { display: block; margin-top: 1rem; font-size: .75rem; color: var(--faint); }
+    .repo img {
+      display: block;
+      width: 100%;
+      height: auto;
+      margin-top: 1.25rem;
+      border: 1px solid var(--line);
+      border-radius: 6px;
+      background: #000;
+    }
+    .cta {
+      display: inline-flex;
+      align-items: center;
+      min-height: 44px;
+      margin-top: .35rem;
+      font-family: var(--mono);
+      font-size: .8125rem;
+      color: var(--accent);
+    }
+    .cta:hover { text-decoration: underline; }
 
     .plain { list-style: none; margin: 1rem 0 0; padding: 0; }
     .plain li { border-bottom: 1px solid var(--line); }
@@ -156,6 +175,16 @@
     <main>
       <section aria-labelledby="selected">
         <h2 id="selected">Selected work</h2>
+        <article class="repo featured">
+          <div class="repo-head">
+            <h3><a href="https://umbra.name/tinysol/game/">TinySol</a></h3>
+            <span class="tag">DOS &rarr; WASM</span>
+          </div>
+          <p>Klondike solitaire as a hand-assembled 3.5&nbsp;KB 8086 DOS program, running in the browser through js-dos. Every load picks a fresh winnable deal from 640 saved games.</p>
+          <img src="tinysol.png" alt="TinySol Klondike solitaire board running in the browser" width="970" height="730" loading="lazy" decoding="async">
+          <span class="meta">Keyboard + mouse &middot; CGA/EGA/VGA &middot; 640 winnable deals</span>
+          <a class="cta" href="https://umbra.name/tinysol/game/">Play TinySol &#8599;</a>
+        </article>
         <article class="repo">
           <div class="repo-head">
             <h3><a href="https://github.com/DKshad0w/hermes-SkillOpt">hermes-SkillOpt</a></h3>
